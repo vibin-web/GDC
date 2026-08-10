@@ -98,14 +98,14 @@ export function Hero() {
             >
               <MagneticButton
                 href="https://www.clinicia.com/calendar/book?u=63852"
-                className="font-hero flex-1 sm:flex-none bg-pink text-white px-3 sm:px-9 py-2 sm:py-5 rounded-full text-xs sm:text-lg md:text-xl font-bold shadow-glow-pink hover:scale-105 transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap"
+                className="font-hero flex-1 sm:flex-none bg-pink text-white px-3 sm:px-9 py-5 sm:py-5 rounded-full text-xs sm:text-lg md:text-xl font-bold shadow-glow-pink hover:scale-105 transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap"
               >
                 <FaCalendarCheck className="text-xs sm:text-xl" />
                 Book Appointment
               </MagneticButton>
               <MagneticButton
                 href={`tel:${clinicInfo.phones[0].replace(/\s/g, '')}`}
-                className="font-hero flex-1 sm:flex-none bg-transparent text-white border border-white/25 hover:bg-white/10 hover:border-white/50 px-3 sm:px-9 py-2 sm:py-5 rounded-full text-xs sm:text-lg md:text-xl font-bold transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap"
+                className="font-hero flex-1 sm:flex-none bg-transparent text-white border border-white/25 hover:bg-white/10 hover:border-white/50 px-3 sm:px-9 py-5 sm:py-5 rounded-full text-xs sm:text-lg md:text-xl font-bold transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap"
               >
                 <FaPhone className="text-xs sm:text-base" />
                 Call Now
@@ -115,7 +115,7 @@ export function Hero() {
 
           {/* Right Column — 3D Visual */}
           <motion.div
-            className="order-3 lg:order-none -mb-10 sm:mb-0 flex flex-1 justify-center items-center relative"
+            className="order-3 lg:order-none -mb-10 sm:mb-0 flex flex-1 justify-center items-center relative pointer-events-none"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={mounted ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 1.2 }}
@@ -186,7 +186,7 @@ export function Hero() {
         animate={mounted ? { opacity: 1 } : {}}
         transition={{ delay: 1.5 }}
         onClick={() => scrollTo('about')}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 text-white/40 hover:text-white/70 transition-colors"
+        className="hidden sm:block absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 text-white/40 hover:text-white/70 transition-colors"
         aria-label="Scroll to about section"
       >
         <FaChevronDown className="text-xl animate-bounce-gentle" />
