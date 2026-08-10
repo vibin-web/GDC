@@ -336,6 +336,45 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+/* Slim scrollbar on tablet/laptop/desktop — true mobile keeps the native scrollbar */
+@media (min-width: 640px) {
+  html,
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+  }
+}
+
+/* Hide the scrollbar entirely on laptop/desktop — tablet keeps the thin one above */
+@media (min-width: 1024px) {
+  html,
+  body {
+    scrollbar-width: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
+}
+
 /* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
   *,
