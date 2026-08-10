@@ -136,7 +136,7 @@ export function Hero() {
               <motion.img
                 src="/images/hero-tooth.png"
                 alt="Premium Dental Care"
-                className="relative z-10 w-[300px] sm:w-[280px] md:w-[340px] lg:w-[400px] xl:w-[500px] animate-float"
+                className="relative z-10 w-[300px] sm:w-[380px] md:w-[420px] lg:w-[400px] xl:w-[500px] animate-float"
                 style={{ animationDuration: '6s' }}
               />
 

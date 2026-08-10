@@ -120,7 +120,7 @@ export function Navbar() {
           {/* Phone (tablet) */}
           <a
             href="tel:9043816020"
-            className="hidden md:flex lg:hidden items-center gap-2 text-blue-light text-sm font-medium"
+            className="hidden items-center gap-2 text-blue-light text-sm font-medium"
           >
             <FaPhone className="text-xs" />
             90438 16020

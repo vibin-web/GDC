@@ -5,7 +5,7 @@ export function GradientMesh({ className = '', variant = 'dark' }) {
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       {/* Blob 1 - Pink */}
       <div
-        className="absolute w-[280px] h-[280px] sm:w-[600px] sm:h-[600px] lg:w-[900px] lg:h-[900px] rounded-full animate-drift blur-[60px] sm:blur-[120px] will-change-transform"
+        className="absolute w-[280px] h-[280px] sm:w-[480px] sm:h-[480px] lg:w-[640px] lg:h-[640px] rounded-full animate-drift blur-[60px] sm:blur-[70px] lg:blur-[90px] will-change-transform"
         style={{
           background: isDark
             ? 'radial-gradient(circle, rgba(255,45,143,0.12) 0%, transparent 70%)'
@@ -16,7 +16,7 @@ export function GradientMesh({ className = '', variant = 'dark' }) {
       />
       {/* Blob 2 - Blue */}
       <div
-        className="absolute w-[240px] h-[240px] sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full animate-drift-slow blur-[50px] sm:blur-[120px] will-change-transform"
+        className="absolute w-[240px] h-[240px] sm:w-[400px] sm:h-[400px] lg:w-[520px] lg:h-[520px] rounded-full animate-drift-slow blur-[50px] sm:blur-[60px] lg:blur-[80px] will-change-transform"
         style={{
           background: isDark
             ? 'radial-gradient(circle, rgba(0,87,231,0.1) 0%, transparent 70%)'
@@ -28,7 +28,7 @@ export function GradientMesh({ className = '', variant = 'dark' }) {
       />
       {/* Blob 3 - Light Blue */}
       <div
-        className="hidden sm:block absolute w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] rounded-full animate-drift blur-[100px] will-change-transform"
+        className="hidden sm:block absolute sm:w-[300px] sm:h-[300px] lg:w-[440px] lg:h-[440px] rounded-full animate-drift blur-[70px] lg:blur-[90px] will-change-transform"
         style={{
           background: isDark
             ? 'radial-gradient(circle, rgba(47,127,255,0.08) 0%, transparent 70%)'

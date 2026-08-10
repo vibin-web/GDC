@@ -144,7 +144,7 @@ export function About() {
             </div>
 
             {/* Right Column — Consultants */}
-            <div className="w-full max-w-[380px] mx-auto lg:max-w-none">
+            <div className="w-full max-w-[380px] sm:max-w-[560px] mx-auto lg:max-w-none">
               <h3 className="text-h4 text-near-black font-semibold text-center lg:text-left mb-4">
                 Consultants
               </h3>
