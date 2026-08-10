@@ -23,7 +23,9 @@ export function FloatingParticles({
       {particles.map((p) => (
         <div
           key={p.id}
-          className="absolute rounded-full animate-float-slow"
+          className={`absolute rounded-full animate-float-slow ${
+            p.id >= Math.ceil(count / 2) ? 'hidden sm:block' : ''
+          }`}
           style={{
             left: `${p.x}%`,
             top: `${p.y}%`,

@@ -59,12 +59,12 @@ export function Navbar() {
         transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
           isScrolled
-            ? 'h-14 bg-navy/95 shadow-[0_2px_10px_rgba(100,100,100,0.15)]'
-            : 'h-16 bg-navy/80'
+            ? 'h-11 sm:h-14 bg-navy/95 shadow-[0_2px_10px_rgba(100,100,100,0.15)]'
+            : 'h-12 sm:h-16 bg-navy/80'
         }`}
         style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}
       >
-        <div className="container-max h-full mx-auto px-5 md:px-10 flex items-center justify-between">
+        <div className="container-max h-full mx-auto px-4 sm:px-5 md:px-10 flex items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => scrollTo('#home')}
@@ -73,7 +73,7 @@ export function Navbar() {
             <img
               src="/images/logo.png"
               alt="Gomathi Dental Clinic"
-              className="h-10 md:h-12 w-auto"
+              className="h-7 sm:h-10 md:h-12 w-auto"
             />
             <div className="text-left hidden sm:block">
               <div className="text-white font-semibold text-sm leading-tight">
@@ -128,16 +128,21 @@ export function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
-            onClick={() => setIsMobileOpen(true)}
-            className="lg:hidden text-white p-2"
-            aria-label="Open menu"
+            onClick={() => setIsMobileOpen((open) => !open)}
+            className="lg:hidden text-white p-1.5 sm:p-2"
+            aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
           >
-            <FaBars className="text-xl" />
+            {isMobileOpen ? (
+              <FaTimes className="text-base sm:text-xl" />
+            ) : (
+              <FaBars className="text-base sm:text-xl" />
+            )}
           </button>
         </div>
       </motion.nav>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Dropdown Menu — sits directly below the fixed header, header stays
+          visible throughout so its logo/hamburger(→close) never duplicate */}
       <AnimatePresence>
         {isMobileOpen && (
           <>
@@ -147,65 +152,44 @@ export function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[998]"
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[998] lg:hidden"
               onClick={() => setIsMobileOpen(false)}
             />
-            {/* Drawer */}
+            {/* Panel */}
             <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-[360px] bg-navy z-[999] p-8 flex flex-col"
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className={`fixed left-0 right-0 bg-navy z-[999] p-6 flex flex-col gap-1 max-h-[calc(100dvh-3rem)] overflow-y-auto shadow-[0_12px_24px_rgba(0,0,0,0.35)] lg:hidden ${
+                isScrolled ? 'top-11' : 'top-12'
+              }`}
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsMobileOpen(false)}
-                className="absolute top-5 right-5 text-white p-2"
-                aria-label="Close menu"
-              >
-                <FaTimes className="text-xl" />
-              </button>
-
-              {/* Logo */}
-              <div className="flex items-center gap-3 mb-10 mt-4">
-                <img
-                  src="/images/logo.png"
-                  alt="Gomathi Dental Clinic"
-                  className="h-12 w-auto"
-                />
-                <div>
-                  <div className="text-white font-semibold text-sm">Gomathi Dental</div>
-                </div>
-              </div>
-
               {/* Links */}
-              <div className="flex flex-col gap-6 flex-1">
-                {navLinks.map((link, i) => (
-                  <motion.button
-                    key={link.href}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.08 + 0.2 }}
-                    onClick={() => scrollTo(link.href)}
-                    className={`text-left text-lg font-medium transition-colors ${
-                      activeSection === link.href.replace('#', '')
-                        ? 'text-pink'
-                        : 'text-white/80 hover:text-white'
-                    }`}
-                  >
-                    {link.label}
-                  </motion.button>
-                ))}
-              </div>
+              {navLinks.map((link, i) => (
+                <motion.button
+                  key={link.href}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  onClick={() => scrollTo(link.href)}
+                  className={`text-left text-base font-medium py-3 border-b border-white/5 transition-colors ${
+                    activeSection === link.href.replace('#', '')
+                      ? 'text-pink'
+                      : 'text-white/80 hover:text-white'
+                  }`}
+                >
+                  {link.label}
+                </motion.button>
+              ))}
 
               {/* CTA */}
               <motion.button
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: navLinks.length * 0.05 }}
                 onClick={() => scrollTo('#appointment')}
-                className="bg-pink text-white px-6 py-4 rounded-full text-base font-semibold shadow-glow-pink mt-6"
+                className="bg-pink text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-glow-pink mt-3"
               >
                 Book Appointment
               </motion.button>

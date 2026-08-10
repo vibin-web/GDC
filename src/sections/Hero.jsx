@@ -39,7 +39,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[40dvh] flex items-center overflow-hidden bg-navy"
+      className="relative min-h-[30svh] sm:min-h-[40svh] flex items-center overflow-hidden bg-navy"
       style={{
         background:
           'radial-gradient(ellipse at 20% 50%, rgba(0,87,231,0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(255,45,143,0.12) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(0,87,231,0.08) 0%, transparent 50%), linear-gradient(180deg, #0A1628 0%, #0D1E3C 50%, #0A1628 100%)',
@@ -60,11 +60,13 @@ export function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 container-max mx-auto px-5 md:px-10 pt-20 pb-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
-          {/* Left Column */}
+      <div className="relative z-10 container-max mx-auto px-5 md:px-10 pt-16 pb-4 sm:pt-20 sm:pb-10">
+        <div className="flex flex-col lg:flex-row items-center gap-2 sm:gap-12 lg:gap-8">
+          {/* Left Column — text is "contents" on mobile so its children can be
+              individually reordered alongside the image column; becomes a real
+              stacked column again at lg via lg:flex */}
           <motion.div
-            className="flex-1 lg:max-w-[55%]"
+            className="contents lg:flex lg:flex-col lg:flex-1 lg:max-w-[55%]"
             variants={staggerContainer}
             initial="initial"
             animate={mounted ? 'animate' : 'initial'}
@@ -73,7 +75,7 @@ export function Hero() {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.6 }}
-              className="font-hero text-6xl sm:text-7xl md:text-8xl lg:text-[88px] xl:text-[102px] font-black text-white leading-[1.02] tracking-tight mb-6"
+              className="order-1 lg:order-none text-center lg:text-left font-hero text-4xl sm:text-7xl md:text-8xl lg:text-[88px] xl:text-[102px] font-black text-white leading-[1.05] sm:leading-[1.02] tracking-tight mb-1 sm:mb-6"
               style={{ textShadow: '0 6px 40px rgba(0,0,0,0.4)' }}
             >
               {clinicInfo.name}
@@ -83,7 +85,7 @@ export function Hero() {
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="font-hero text-2xl sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[44px] font-bold gradient-text tracking-wide mb-10"
+              className="order-2 lg:order-none text-center lg:text-left font-hero text-lg sm:text-3xl md:text-4xl lg:text-[38px] xl:text-[44px] font-bold gradient-text tracking-wide mb-2 sm:mb-10"
             >
               {clinicInfo.tagline}
             </motion.p>
@@ -92,20 +94,20 @@ export function Hero() {
             <motion.div
               variants={fadeUp}
               transition={{ duration: 0.5, delay: 1.0 }}
-              className="flex flex-col sm:flex-row gap-4 mb-4"
+              className="order-4 lg:order-none flex flex-row items-center justify-center lg:justify-start gap-2 sm:gap-4 mb-8 sm:mb-4 w-full"
             >
               <MagneticButton
                 href="https://www.clinicia.com/calendar/book?u=63852"
-                className="font-hero bg-pink text-white px-9 py-5 rounded-full text-lg md:text-xl font-bold shadow-glow-pink hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
+                className="font-hero flex-1 sm:flex-none bg-pink text-white px-3 sm:px-9 py-2 sm:py-5 rounded-full text-xs sm:text-lg md:text-xl font-bold shadow-glow-pink hover:scale-105 transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap"
               >
-                <FaCalendarCheck className="text-xl" />
+                <FaCalendarCheck className="text-xs sm:text-xl" />
                 Book Appointment
               </MagneticButton>
               <MagneticButton
                 href={`tel:${clinicInfo.phones[0].replace(/\s/g, '')}`}
-                className="font-hero bg-transparent text-white border border-white/25 hover:bg-white/10 hover:border-white/50 px-9 py-5 rounded-full text-lg md:text-xl font-bold transition-all duration-300 flex items-center justify-center gap-3"
+                className="font-hero flex-1 sm:flex-none bg-transparent text-white border border-white/25 hover:bg-white/10 hover:border-white/50 px-3 sm:px-9 py-2 sm:py-5 rounded-full text-xs sm:text-lg md:text-xl font-bold transition-all duration-300 flex items-center justify-center gap-1.5 sm:gap-3 whitespace-nowrap"
               >
-                <FaPhone className="text-base" />
+                <FaPhone className="text-xs sm:text-base" />
                 Call Now
               </MagneticButton>
             </motion.div>
@@ -113,7 +115,7 @@ export function Hero() {
 
           {/* Right Column — 3D Visual */}
           <motion.div
-            className="flex flex-1 justify-center items-center relative"
+            className="order-3 lg:order-none -mb-10 sm:mb-0 flex flex-1 justify-center items-center relative"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={mounted ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 1.2 }}
@@ -134,7 +136,7 @@ export function Hero() {
               <motion.img
                 src="/images/hero-tooth.png"
                 alt="Premium Dental Care"
-                className="relative z-10 w-[140px] sm:w-[280px] md:w-[340px] lg:w-[400px] xl:w-[500px] animate-float"
+                className="relative z-10 w-[300px] sm:w-[280px] md:w-[340px] lg:w-[400px] xl:w-[500px] animate-float"
                 style={{ animationDuration: '6s' }}
               />
 
@@ -184,7 +186,7 @@ export function Hero() {
         animate={mounted ? { opacity: 1 } : {}}
         transition={{ delay: 1.5 }}
         onClick={() => scrollTo('about')}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 hover:text-white/70 transition-colors"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 text-white/40 hover:text-white/70 transition-colors"
         aria-label="Scroll to about section"
       >
         <FaChevronDown className="text-xl animate-bounce-gentle" />
