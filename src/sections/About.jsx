@@ -79,7 +79,7 @@ export function About() {
             </h2>
             <p className="text-body-lg text-dark-gray max-w-2xl mx-auto">
               Providing world-class dental treatment with advanced technology and compassionate
-              care in Sankarankovil since 2020.
+              care in Sankarankovil since 2022.
             </p>
           </motion.div>
 
