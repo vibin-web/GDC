@@ -184,15 +184,18 @@ export function Navbar() {
               ))}
 
               {/* CTA */}
-              <motion.button
+              <motion.a
+                href="https://www.clinicia.com/calendar/book?u=63852"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navLinks.length * 0.05 }}
-                onClick={() => scrollTo('#appointment')}
-                className="bg-pink text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-glow-pink mt-3"
+                onClick={() => setIsMobileOpen(false)}
+                className="bg-pink text-white px-6 py-3.5 rounded-full text-sm font-semibold shadow-glow-pink mt-3 text-center"
               >
                 Book Appointment
-              </motion.button>
+              </motion.a>
             </motion.div>
           </>
         )}
